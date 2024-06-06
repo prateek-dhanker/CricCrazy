@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricCrazy</title>
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navcontainer">
+            <a href="/" class="navbar-brand"><img src="/logo.png" alt=""></a>
+            <ul class="navbar-menu">
+                <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/dashboard/players">My Players</a></li>
+                <li class="nav-item"><a href="/blog">Blog</a></li>
+            </ul>
+            <div class="navbar-right">
+              <% if(user){ %>
+                <div class="circle" onclick="toggleDropdown()"> <%= user.username[0] %> </div>
+                <div class="dropdown" id="dropdown">
+                  <a href="#">Username: <%= user.username%></a>
+                  <a href="/dashboard">Dashboard</a>
+                  <a href="/dashboard/players">Players</a>
+                  <a href="/dashboard/teams">Teams</a>
+                  <a href="/auth/logout" id="logout-btn">Logout</a>
+                </div>
+                
+                <% } else { %>
+                  <a href="/auth/login" class="btn btn-primary nav-btn">Login</a>
+                  <a href="/auth/signup" id="signup-btn" class="btn btn-secondary nav-btn">Signup</a>
+                  <% } %>
+            </div>
+            <div class="hamBurger">
+              <a onclick="toggleNav()">&#9776;</a>
+            </div>
+        
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <h1 class="green-h">Simple Way</h1>
+            <div class="innerDiv">
+                <h1 class="secondary-h ">to manage</h1>
+                <h1 class="green-h ">cricket stats</h1>
+            </div>
+            <% if(user) {%>
+                <button class="mainbtn"><a href="/dashboard">Go to dashboard</a></button>
+            <% } else { %>
+                <button class="mainbtn"><a href="/auth/signup">Create New Account</a></button>
+            <% } %>
+        </div>
+        <section class="features">
+            <div class="features-container">
+
+              <div class="card">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD/UlEQVR4nO2Wb2zUdBjHfyHhBUFoyUWugyW7A00MWcS1t3ZOM2jZom/wjf/IWsG4tcO/iSBu0l7aJr7AGN8qp1FYG2OyRPGV2YCYsHYTIxONWzYmTGAOR1wkCwYCYTym2+GO7drr9cp2I/dNvklf/JL7fJ7f0/QQKqWUUsILqMuqutWnKUszSVvrJy19MmaIkzFT6o+bkhFrb34KqeoyVIyhLPVJ0tJPU7YOmY2b0t01pL6NhliLiiU1vR+tIG39AGXpU3PhswrMSNyOm2JqU8drDywqfJWlbydtbSQbuKdAujFDGo0ZLTsXFJo6lVpeZWsvkpbe4wXuRyB+R8SUrJjZ/AKVkpaHuhqbe99fn+hRKylbZylb30Na2rekpU34Ac9HID57I3/HTelI3JT2VJgtWzcYuyvLD7esL+94e0Ve8KSlX8wHMiyBuFcNcdS3QFjwoQqYEpQEqNINSPfhChkSxA43Oy/pEhRoF+Hhz5rgra6P4dHPX50RWTIC7SI8lGqCYyN94OTsP2OQOPSmp0TxCDiT/7QJvj//C2Tm18sjUHHw5SIXcIEPVYC09es54bo1IE+oQFmaf4E5a5MZZ4WoQ2+4r5AhXstH4C8vKAe8rkuHtlNfAt2lANmt5hbwmPzQxChUffG690tsSGP+BSz9Ry/4rUd1GJ68NP3jPZeHgO6UXSUKnrx5p2KvbwHK1lJuAo91tsHAldG7IKzxQah2kSh48ub/N3DQt8AahW3EFQ6yFXunDk5fHJoHc3TgB1jbygEus7PnZRbKGx+H4332vPODF36HTc31QPA0EAKTs1GB2eFfoLUew2X2RlaJ/SxsSG6H/rGz86COD56EaOu2GQmZhQff5aDzpxPzzg3/+QdUig2+4QmeuVmxazOO8gkus0fcbsGPhAP/3W924fACA1Ge/jov+LRAnatAWmJj8hkYuHQu6zo5LXRtiHTLGmueQEGCyZydS8LtJsKYPDGz+92B4KcF9nMkLrNThUoEhSd4ZorgE9WokOAyl/IUyCERGF5wdp/5BBWa6N6GlbjMDgeRODN+PjA8ITDnIq/UrkJhZHVyWzUmc9f9SDgv9s8XBqfrPAeavEBfI16qTqAwgyvszpwCaQnnY+fUeQ4w+dtlQg0fKnyGRNKXREYD7H3bPYGfleA+vGcCPPMBWohgCtcaugBPH0ALmTVJbnfOb4QvAfoWwdMtaDGCKdxzmML+G1yAvkoIzLNoMRN5b8sjmMz15ysQ5ZkzUSFRiYohkX21q3CF6/AtwNNfhfaRCjOYzD2PK+yEm0CUZ66UCYyEijkRtX4drrDfzBVw/tNHdtSuQ0slq5NcA66w44RAj68VmIbF5imllPs1/wHH6/RXlnujjgAAAABJRU5ErkJggg==">
+                <p>100% secured data</p>
+              </div>
+              <div class="card">
+                <img src="data:image/png;base64,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">
+                <p>Manage Players</p>
+              </div>
+            </div>
+            <div class="features-container">
+
+              <div class="card">
+                <img src="data:image/png;base64,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">
+                <p>Manage Team</p>
+              </div>
+              <div class="card">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADmElEQVR4nO2av2/TQBTHnzo14R+AgTkg8UNiY6jUkahDwspalQUWFpIZCSTUPaQFagsV1IaiEFKp6YJhIf4LYEnbqEkLaqF1QaLEy6GLf+RHbeecvHMurZ/0layL/XLvc/fecxwDhBZaaKEx2t88XNSLsNJYhd/6KpBhypxD/t8axCCo4BtF+DXswB1AHNC5cQegF2Fl2MF6KMcdQEOAbe+6C4pwxB2ALkCgXhIKQO0lkEqmpa15IEdv+w+OxZ/QACp00nN4AJz8CQVAb9PhsjHhjWc4W93Nn3AAtByQ6nxrxX688l5hqkH8WfOM3k5NRZOpejSZJh1KpGvR5MN4IAAOlloTpZOmq+Z1vnXuIP5sAM1Au4K3ldoOBMCWuVI/3zRbVM/zewFg8WcDcA3eUCAAKpmT8trivQCw+AsUQM2lKu8tNm9NHT9nAUC1mQVSX+hscyz+hg6gYopC8LNb3FaYav81u49AAegO+vOud793q/btKXBcMHJ9wxxjvYGy5qlpGvESNwC6j1xmGacQ6BhNB+EANFaNrU5X22nrOq28Vw47XUd3QrMmMN5AWfNUo0niJRQAe4vueYsOICsggC1z5Wne80qB/T5TQGgANcYiuD9AERwcgKROgaTWQVYJD51f+ECkFzc7AsNsgwgAyjVewVu6IBU62mV7jaBFr/tGKFgAsjHJsYkZAjfuoGps4q4NwStV+hE6gPH4A887qn5EfY4MgChy8PataAhADXcAmCnQr5xa6UimQOWsA9BFLoLj07P4XWB6dnQAAGcJnwJw1gF8zl+1nSvvrxPsceFTQO/+AuTxEEBG8BRQli/Zzj8uXSbY48IDgKcFAo9yhugx8rjwKQABdAGhAaxv7NqPkkub3wn2uPApoHU/T0ceDwFkBE+B0reqvWprX6sEe1x4ACBQF6CPyndk44GpU+rsyKCc2i5wXDD+HXKrGe3BowJYR6r2z6/cs7987tp93wDoyrMGjwpAQ6r2JybgEwDLtj/VACoOwe+6BI8KoIRU7bEBeAWPCgCQqj0mgF7BU9NUWdFUmbhICbwLqEgAWIKndliWJt0A0M8C7wIqAgDW4HvsAkYfslhFsC7BJ/BpTruAbfUDBACcLZJMK9bjeHrMfqWM2wXmYjN28NlY6+9x4GznEqlJCwA9Zr9SMl+Q4PpboNz/S8s+LJJIPYkk04/9XSWX43zfEilvg/TlFq+gQwsttNDAh/0Hc71wm/+KuH4AAAAASUVORK5CYII=">
+                <p>Stats Calculations</p>
+              </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="/logo.png" alt="CricCrazy Logo" />
+            <p>Your ultimate source for player and team statistics.</p>
+          </div>
+          <div class="footer-links">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard/players">Players</a></li>
+                <li><a href="/dashboard/teams">Teams (Coming Soon)</a></li>
+                <li><a href="/contact">Blogs</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h3>Follow Us:</h3>
+            <div id="logos">
+              <a href="https://www.linkedin.com" target="_blank"
+                ><img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjMiIGZpbGw9IiMzQTI4QTciLz4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9IiMyRDg2RTEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4zNDA1IDE1LjA3NjJDMTkuMzQwNSAxNi4yMDggMTguNDc4NyAxNy4xMjQgMTcuMTMwOSAxNy4xMjRDMTUuODM1NyAxNy4xMjQgMTQuOTczOSAxNi4yMDggMTUuMDAwNiAxNS4wNzYyQzE0Ljk3MzkgMTMuODg5MyAxNS44MzU3IDEzIDE3LjE1NjggMTNDMTguNDc4NiAxMyAxOS4zMTQ2IDEzLjg4OTMgMTkuMzQwNSAxNS4wNzYyWk0xNS4xMDkgMzEuOTI1NVYxOC43NDE3SDE5LjIwNjNWMzEuOTI0NkgxNS4xMDlWMzEuOTI1NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjIuNDkxMiAyMi45NDg4QzIyLjQ5MTIgMjEuMzA0NCAyMi40MzcgMTkuOTAyNSAyMi4zODI4IDE4Ljc0MzFIMjUuOTQxN0wyNi4xMzA5IDIwLjU0OTNIMjYuMjExOEMyNi43NTEgMTkuNzEzMyAyOC4wOTg3IDE4LjQ0NzMgMzAuMjgyNCAxOC40NDczQzMyLjk3NzggMTguNDQ3MyAzNC45OTk4IDIwLjIyNjcgMzQuOTk5OCAyNC4xMDczVjMxLjkyNjlIMzAuOTAyNVYyNC42MjA3QzMwLjkwMjUgMjIuOTIxMyAzMC4zMDk5IDIxLjc2MjggMjguODI3MiAyMS43NjI4QzI3LjY5NDUgMjEuNzYyOCAyNy4wMjExIDIyLjU0NDYgMjYuNzUxOSAyMy4yOTg5QzI2LjY0MzUgMjMuNTY4OSAyNi41OTAyIDIzLjk0NTYgMjYuNTkwMiAyNC4zMjRWMzEuOTI2OUgyMi40OTI4VjIyLjk0ODhIMjIuNDkxMloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+                  width="48"
+                  height="48"
+                  alt=""
+              /></a>
+              <a href="https://www.instagram.com" target="_blank"
+                ><img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjQiIGZpbGw9InVybCgjaW5zdF9ncikiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4wMDAzIDEzLjczNDdDMjcuMzQzNyAxMy43MzQ3IDI3LjczOTcgMTMuNzQ3NCAyOS4wNjAxIDEzLjgwNzdDMzAuMjgxIDEzLjg2MzQgMzAuOTQ0IDE0LjA2NzMgMzEuMzg1MiAxNC4yMzg4QzMxLjk2OTcgMTQuNDY2IDMyLjM4NjggMTQuNzM3MyAzMi44MjUgMTUuMTc1NUMzMy4yNjMyIDE1LjYxMzcgMzMuNTM0NSAxNi4wMzA4IDMzLjc2MTcgMTYuNjE1M0MzMy45MzMyIDE3LjA1NjUgMzQuMTM3MSAxNy43MTk1IDM0LjE5MjggMTguOTQwNEMzNC4yNTMxIDIwLjI2MDcgMzQuMjY1OCAyMC42NTY4IDM0LjI2NTggMjQuMDAwMkMzNC4yNjU4IDI3LjM0MzYgMzQuMjUzMSAyNy43Mzk3IDM0LjE5MjggMjkuMDYwMUMzNC4xMzcxIDMwLjI4MDkgMzMuOTMzMiAzMC45NDM5IDMzLjc2MTcgMzEuMzg1MUMzMy41MzQ1IDMxLjk2OTYgMzMuMjYzMiAzMi4zODY4IDMyLjgyNSAzMi44MjQ5QzMyLjM4NjggMzMuMjYzMSAzMS45Njk3IDMzLjUzNDQgMzEuMzg1MiAzMy43NjE2QzMwLjk0NCAzMy45MzMxIDMwLjI4MSAzNC4xMzcxIDI5LjA2MDEgMzQuMTkyN0MyNy43Mzk5IDM0LjI1MyAyNy4zNDM5IDM0LjI2NTggMjQuMDAwMyAzNC4yNjU4QzIwLjY1NjYgMzQuMjY1OCAyMC4yNjA2IDM0LjI1MyAxOC45NDA0IDM0LjE5MjdDMTcuNzE5NSAzNC4xMzcxIDE3LjA1NjUgMzMuOTMzMSAxNi42MTUzIDMzLjc2MTZDMTYuMDMwOCAzMy41MzQ0IDE1LjYxMzcgMzMuMjYzMSAxNS4xNzU1IDMyLjgyNDlDMTQuNzM3NCAzMi4zODY4IDE0LjQ2NiAzMS45Njk2IDE0LjIzODggMzEuMzg1MUMxNC4wNjc0IDMwLjk0MzkgMTMuODYzNCAzMC4yODA5IDEzLjgwNzcgMjkuMDYwMUMxMy43NDc1IDI3LjczOTcgMTMuNzM0NyAyNy4zNDM2IDEzLjczNDcgMjQuMDAwMkMxMy43MzQ3IDIwLjY1NjggMTMuNzQ3NSAyMC4yNjA3IDEzLjgwNzcgMTguOTQwNEMxMy44NjM0IDE3LjcxOTUgMTQuMDY3NCAxNy4wNTY1IDE0LjIzODggMTYuNjE1M0MxNC40NjYgMTYuMDMwOCAxNC43MzczIDE1LjYxMzcgMTUuMTc1NSAxNS4xNzU1QzE1LjYxMzcgMTQuNzM3MyAxNi4wMzA4IDE0LjQ2NiAxNi42MTUzIDE0LjIzODhDMTcuMDU2NSAxNC4wNjczIDE3LjcxOTUgMTMuODYzNCAxOC45NDA0IDEzLjgwNzdDMjAuMjYwOCAxMy43NDc0IDIwLjY1NjggMTMuNzM0NyAyNC4wMDAzIDEzLjczNDdaTTI0LjAwMDMgMTEuNDc4NUMyMC41OTk2IDExLjQ3ODUgMjAuMTczMSAxMS40OTI5IDE4LjgzNzYgMTEuNTUzOUMxNy41MDQ4IDExLjYxNDcgMTYuNTk0NSAxMS44MjY0IDE1Ljc5OCAxMi4xMzU5QzE0Ljk3NDYgMTIuNDU1OSAxNC4yNzYzIDEyLjg4NCAxMy41ODAxIDEzLjU4MDFDMTIuODg0IDE0LjI3NjMgMTIuNDU1OSAxNC45NzQ2IDEyLjEzNTkgMTUuNzk4QzExLjgyNjQgMTYuNTk0NSAxMS42MTQ3IDE3LjUwNDcgMTEuNTUzOSAxOC44Mzc1QzExLjQ5MjkgMjAuMTczMSAxMS40Nzg1IDIwLjU5OTUgMTEuNDc4NSAyNC4wMDAyQzExLjQ3ODUgMjcuNDAwOSAxMS40OTI5IDI3LjgyNzMgMTEuNTUzOSAyOS4xNjI5QzExLjYxNDcgMzAuNDk1NyAxMS44MjY0IDMxLjQwNTkgMTIuMTM1OSAzMi4yMDI0QzEyLjQ1NTkgMzMuMDI1OCAxMi44ODQgMzMuNzI0MSAxMy41ODAxIDM0LjQyMDNDMTQuMjc2MyAzNS4xMTY0IDE0Ljk3NDYgMzUuNTQ0NiAxNS43OTggMzUuODY0NUMxNi41OTQ1IDM2LjE3NDEgMTcuNTA0OCAzNi4zODU4IDE4LjgzNzYgMzYuNDQ2NkMyMC4xNzMxIDM2LjUwNzUgMjAuNTk5NiAzNi41MjE5IDI0LjAwMDMgMzYuNTIxOUMyNy40MDEgMzYuNTIxOSAyNy44Mjc0IDM2LjUwNzUgMjkuMTYzIDM2LjQ0NjZDMzAuNDk1NyAzNi4zODU4IDMxLjQwNiAzNi4xNzQxIDMyLjIwMjUgMzUuODY0NUMzMy4wMjU5IDM1LjU0NDYgMzMuNzI0MiAzNS4xMTY0IDM0LjQyMDQgMzQuNDIwM0MzNS4xMTY1IDMzLjcyNDEgMzUuNTQ0NiAzMy4wMjU4IDM1Ljg2NDYgMzIuMjAyNEMzNi4xNzQyIDMxLjQwNTkgMzYuMzg1OSAzMC40OTU3IDM2LjQ0NjYgMjkuMTYyOUMzNi41MDc2IDI3LjgyNzMgMzYuNTIyIDI3LjQwMDkgMzYuNTIyIDI0LjAwMDJDMzYuNTIyIDIwLjU5OTUgMzYuNTA3NiAyMC4xNzMxIDM2LjQ0NjYgMTguODM3NUMzNi4zODU5IDE3LjUwNDcgMzYuMTc0MiAxNi41OTQ1IDM1Ljg2NDYgMTUuNzk4QzM1LjU0NDYgMTQuOTc0NiAzNS4xMTY1IDE0LjI3NjMgMzQuNDIwNCAxMy41ODAxQzMzLjcyNDIgMTIuODg0IDMzLjAyNTkgMTIuNDU1OSAzMi4yMDI1IDEyLjEzNTlDMzEuNDA2IDExLjgyNjQgMzAuNDk1NyAxMS42MTQ3IDI5LjE2MyAxMS41NTM5QzI3LjgyNzQgMTEuNDkyOSAyNy40MDEgMTEuNDc4NSAyNC4wMDAzIDExLjQ3ODVaTTI0LjAwNTggMTcuNTc1MkMyMC40NTQ1IDE3LjU3NTIgMTcuNTc1NyAyMC40NTQgMTcuNTc1NyAyNC4wMDUyQzE3LjU3NTcgMjcuNTU2NSAyMC40NTQ1IDMwLjQzNTMgMjQuMDA1OCAzMC40MzUzQzI3LjU1NyAzMC40MzUzIDMwLjQzNTggMjcuNTU2NSAzMC40MzU4IDI0LjAwNTJDMzAuNDM1OCAyMC40NTQgMjcuNTU3IDE3LjU3NTIgMjQuMDA1OCAxNy41NzUyWk0yNC4wMDU4IDI4LjE3OTJDMjEuNzAwNiAyOC4xNzkyIDE5LjgzMTggMjYuMzEwNCAxOS44MzE4IDI0LjAwNTJDMTkuODMxOCAyMS43MDAxIDIxLjcwMDYgMTkuODMxNCAyNC4wMDU4IDE5LjgzMTRDMjYuMzExIDE5LjgzMTQgMjguMTc5NyAyMS43MDAxIDI4LjE3OTcgMjQuMDA1MkMyOC4xNzk3IDI2LjMxMDQgMjYuMzExIDI4LjE3OTIgMjQuMDA1OCAyOC4xNzkyWk0zMC42OTE2IDE4LjgyMDZDMzEuNTIxNCAxOC44MjA2IDMyLjE5NDIgMTguMTQ3OSAzMi4xOTQyIDE3LjMxODFDMzIuMTk0MiAxNi40ODgyIDMxLjUyMTQgMTUuODE1NCAzMC42OTE2IDE1LjgxNTRDMjkuODYxNyAxNS44MTU0IDI5LjE4OSAxNi40ODgyIDI5LjE4OSAxNy4zMTgxQzI5LjE4OSAxOC4xNDc5IDI5Ljg2MTcgMTguODIwNiAzMC42OTE2IDE4LjgyMDZaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJpbnN0X2dyIiB4MT0iMzEuMjU3MSIgeTE9IjgzLjc5MDUiIHgyPSI5OS40MDQ1IiB5Mj0iMTYuNjI5NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjAuMTQ3ODY0IiBzdG9wLWNvbG9yPSIjRjY2NDBFIi8+CjxzdG9wIG9mZnNldD0iMC40NDM5NzQiIHN0b3AtY29sb3I9IiNCQTAzQTciLz4KPHN0b3Agb2Zmc2V0PSIwLjczMzMzNyIgc3RvcC1jb2xvcj0iIzZBMDFCOSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2QjAxQjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K"
+                  width="48"
+                  height="48"
+                  alt=""
+              /></a>
+              <a href="https://www.youtube.com" target="_blank"
+                ><img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMjMiIGZpbGw9IiMzQTI4QTciLz4KPHBhdGggZD0iTTAgMjRDMCAxMC43NDUyIDEwLjc0NTIgMCAyNCAwQzM3LjI1NDggMCA0OCAxMC43NDUyIDQ4IDI0QzQ4IDM3LjI1NDggMzcuMjU0OCA0OCAyNCA0OEMxMC43NDUyIDQ4IDAgMzcuMjU0OCAwIDI0WiIgZmlsbD0iI0ZGMDAwMCIvPgo8cGF0aCBkPSJNMzYuMjY1IDE4LjA3MzRDMzUuOTcwNiAxNi45NDI0IDM1LjEwMzEgMTYuMDUxOCAzNC4wMDE2IDE1Ljc0OTVDMzIuMDA1MyAxNS4yMDAyIDI0IDE1LjIwMDIgMjQgMTUuMjAwMkMyNCAxNS4yMDAyIDE1Ljk5NDYgMTUuMjAwMiAxMy45OTgyIDE1Ljc0OTVDMTIuODk2NyAxNi4wNTE4IDEyLjAyOTIgMTYuOTQyNCAxMS43MzQ4IDE4LjA3MzRDMTEuMiAyMC4xMjMyIDExLjIgMjQuNDAwMiAxMS4yIDI0LjQwMDJDMTEuMiAyNC40MDAyIDExLjIgMjguNjc3IDExLjczNDggMzAuNzI3QzEyLjAyOTIgMzEuODU4IDEyLjg5NjcgMzIuNzQ4NiAxMy45OTgyIDMzLjA1MUMxNS45OTQ2IDMzLjYwMDIgMjQgMzMuNjAwMiAyNCAzMy42MDAyQzI0IDMzLjYwMDIgMzIuMDA1MyAzMy42MDAyIDM0LjAwMTYgMzMuMDUxQzM1LjEwMzEgMzIuNzQ4NiAzNS45NzA2IDMxLjg1OCAzNi4yNjUgMzAuNzI3QzM2LjggMjguNjc3IDM2LjggMjQuNDAwMiAzNi44IDI0LjQwMDJDMzYuOCAyNC40MDAyIDM2LjggMjAuMTIzMiAzNi4yNjUgMTguMDczNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yMS42MDE2IDI4Ljc5OThWMjAuNzk5OEwyOC4wMDE2IDI0LjhMMjEuNjAxNiAyOC43OTk4WiIgZmlsbD0iI0ZGMDAwMCIvPgo8L3N2Zz4K"
+                  width="48"
+                  height="48"
+                  alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-disclaimer">
+          <p>&copy; 2024 Cricket Stats.. All rights reserved.</p>
+          <p>Privacy Policy | Terms of Service</p>
+        </div>
+      </footer>
+    
+    
+
+    <script src="/script.js"></script>
+</body>
+</html>

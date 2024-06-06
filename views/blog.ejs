@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Stats Blog</title>
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/blog.css">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navcontainer">
+            <a href="/" class="navbar-brand"><img src="/logo.png" alt=""></a>
+            <ul class="navbar-menu">
+                <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/dashboard/players">My Players</a></li>
+                <li class="nav-item"><a href="/blog">Blog</a></li>
+            </ul>
+            <div class="navbar-right">
+              <% if(user){ %>
+                <div class="circle" onclick="toggleDropdown()"> <%= user.username[0] %> </div>
+                <div class="dropdown" id="dropdown">
+                  <a href="#">Username: <%= user.username%></a>
+                  <a href="/dashboard">Dashboard</a>
+                  <a href="/dashboard/players">Players</a>
+                  <a href="/dashboard/teams">Teams</a>
+                  <a href="/auth/logout" id="logout-btn">Logout</a>
+                </div>
+                
+                <% } else { %>
+                  <a href="/auth/login" class="btn btn-primary nav-btn">Login</a>
+                  <a href="/auth/signup" id="signup-btn" class="btn btn-secondary nav-btn">Signup</a>
+                  <% } %>
+            </div>
+            <div class="hamBurger">
+              <a onclick="toggleNav()">&#9776;</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="blog-intro">
+            <h1>Explore the Power of Cricket Stats: Unveiling Our Website's Key Features</h1>
+            <p>Posted on May 1, 2024</p>
+            <p>Are you a die-hard cricket fan looking for a one-stop destination to quench your thirst for cricket statistics? Look no further! Our cricket stats website is here to revolutionize the way you experience the game. Today, we're thrilled to unveil the key features that make our website a must-visit for every cricket enthusiast.</p>
+        </section>
+    
+        <section class="blog-posts">
+            <article class="blog-post">
+                <h2>1. Comprehensive Player Profiles:</h2>
+                <p>Dive deep into the world of cricket with our extensive player profiles.Save your cricket statistics and unlock access to in-depth analyses of both your own performance and broader cricketing trends derived from the data you provide.</p>
+            </article>
+    
+            <article class="blog-post">
+                <h2>2. Sorting Based on Statistical Criteria</h2>
+                <p>Enhance your browsing experience by utilizing our sorting feature, which allows you to arrange cricket data based on various statistical criteria.</p>
+            </article>
+    
+            <article class="blog-post">
+                <h2>3. Interactive Match Analysis:</h2>
+                <p>Relive the thrill of your favorite matches with our interactive match analysis feature. Dive into the nitty-gritty details of each game, from batting and bowling performances to match-winning moments. Our comprehensive match reports provide insights that go beyond the scoreboard, giving you a deeper understanding of the game.</p>
+            </article>
+    
+            <article class="blog-post">
+                <h2>4. Personalized Dashboard:</h2>
+                <p>Create your personalized dashboard tailored to your preferences. Follow your favorite players, teams, or tournaments, and receive real-time updates straight to your dashboard. Whether you're a stats junkie or a casual fan, our customizable dashboard ensures you never miss a beat.</p>
+            </article>
+    
+            <article class="blog-post">
+                <h2>5. User-Friendly Interface:</h2>
+                <p>Designed with user experience in mind, our website features a clean and intuitive interface that's easy to navigate. Whether you're accessing our site from your desktop or mobile device, you'll enjoy a seamless browsing experience every time.</p>
+            </article>
+        </section>
+    </main>
+    
+    
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="/logo.png" alt="">
+                <p>Your ultimate source for player and team statistics.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/dashboard/players">Players</a></li>
+                    <li><a href="/dashboard/teams">Teams (Coming Soon)</a></li>
+                    <li><a href="/blog">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <p>
+                    <a href="https://www.facebook.com">Facebook</a>
+                    <a href="https://www.twitter.com">Twitter</a>
+                    <a href="https://www.instagram.com">Instagram</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cricket Stats. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

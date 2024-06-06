@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Players</title>
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/players.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navcontainer">
+            <a href="/" class="navbar-brand"><img src="/logo.png" alt=""></a>
+            <ul class="navbar-menu">
+                <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/dashboard/players">My Players</a></li>
+                <li class="nav-item"><a href="/blog">Blog</a></li>
+            </ul>
+            <div class="navbar-right">
+              <% if(user){ %>
+                <div class="circle" onclick="toggleDropdown()"> <%= user.username[0] %> </div>
+                <div class="dropdown" id="dropdown">
+                  <a href="#">Username: <%= user.username%></a>
+                  <a href="/dashboard">Dashboard</a>
+                  <a href="/dashboard/players">Players</a>
+                  <a href="/dashboard/teams">Teams</a>
+                  <a href="/auth/logout" id="logout-btn">Logout</a>
+                </div>
+                
+                <% } else { %>
+                  <a href="/auth/login" class="btn btn-primary nav-btn">Login</a>
+                  <a href="/auth/signup" id="signup-btn" class="btn btn-secondary nav-btn">Signup</a>
+                  <% } %>
+            </div>
+            <div class="hamBurger">
+              <a onclick="toggleNav()">&#9776;</a>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <% if(total == 0) { %>
+            <img src="https://cdn.pixabay.com/photo/2013/07/12/15/55/cricket-150561_1280.png" class="bat-image">
+            <p class="message">You don't have any player stats yet</p>
+            <p class="sub-message">Start creating resources by clicking on the + sign</p>
+            <div class="create-button">
+                <a class="plus-sign" href="/dashboard/addplayer">+</a>
+            </div>
+        <% } else { %>
+        <div class="main-content">
+            <div class="stats">
+                <div class="sub-main-content">
+                    <div class="stat-item">
+                        <div class="icon"><img src="data:image/png;base64,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"></div>
+                        <div class="stat-info">
+                            <p><%= total %></p>
+                            <span>All Players</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADgElEQVR4nO2Yy1NSURzHT21qUf0LzfQHJDO1sG2rso21FluXY6Uy2fSygNKyJq9P7k1NUXmJaOOD0goUFEzxERfQRBEnQxixEp1EmE4DA4WXq7JoEefc78z3D/h8f+d8zwMATpw4oaxcuV9wWb76sqQEHgRYwiv8MGrcQshNhMcthAwiXJzVEBhJCiDq1VqAsnhEWMCrCMOMF6HwufoNI8squANQh+fFnBQCyvB8mb8osyo4nxhANISKUOh8fWAoV7F6F6BeeHy535dZvbXADOFkRfgWwKXt+XK/70xNcO7vNgijO/nMmu38HPnaJrPochX+lUgISMPzYoV3mgh9ypElhxDpBIBL258iQtN8mX8Di7a/0LB+hVly0RAqQxN8+Vog7eE/9xHH7B2UztHRKNit8C42/xhiCyGz6mc+SGc5uuqP2tvJFauiDkY8q6GEu7X9Jel3/c5LTzi9J0+rVEfsasoTh7epSOjqad5e6pVmsz5sEkJAE75XCt3aFriobQleVy2Psj9s/DCrcf0qQBXeHfOCtjV4TfnFjNzDxsHY82zw0VXQJ/01parT58ncJmTg6RQmH4enVTWDJkoEDeTjYF7bohlLeFPMw6Q4OEwKswEW8Mqd8HGPkKL0DIH+B/CJIZgp0VmAIrydsex3NSm8B1CDt7VX61OCp4Ra3auSw+B/F83BU/tOPmJHey2ek3fjDj+jluiQhaeVJHSb9XCxX4knvG9+Dm5sheGy6S0e8LZ2SfRhQysl0OucjcL77BPJ8B216MJbFXVwacwQhffSY/jBz3RJoXtABb+a+/GD98zSMLC5Bd1vWvGDt6lI6LVZoHdqBC94WklCj30aeiwGfI46WwJ8/KhbmTTifNRZkuDtaC97CQe/wU3ewrLssd7zEnThrYq6P/Cs11uU294au+R88/mg1/oRT3gXTp8ZtlThUdvzEdnVlJMJv9DdtO7ooJyTbZXj5sZyg77moc4oedSdCvwIKertI4hDIB0EITgw2vjMaSTLZt8TD+Z6ntx0dYoKAp3iQsi0trxYj9Tk49KIC8xswEwPPL9tRA4+InXpjRMaccHSfgF8IO5ZkIOPSy0qOq4RFbr2CmCw+v48kvCphjBMCgPIwu8XgkZUsI48/D4hOLGA3y2E16WCcWzg2ULoLhMYsIJnHJFm7dPidyZK2JQ2NzxOnDiBPfQbW0/tX2kCC/sAAAAASUVORK5CYII="></div>
+                        <div class="stat-info">
+                            <p><%= batsman %></p>
+                            <span>Batsman</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-main-content">
+                    <div class="stat-item">
+                        <div class="icon"><img src="data:image/png;base64,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"></div>
+                        <div class="stat-info">
+                            <p><%= bowler %></p>
+                            <span>Bowlers</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="icon"><img src="data:image/png;base64,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"></div>
+                        <div class="stat-info">
+                            <p><%= allrounder %></p>
+                            <span>Allrounders</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> </th>
+                            <th>Player Name</th>
+                            <th class="th-category">Category</th>
+                            <th id="filter-btn">
+                                <img id="filter-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABZUlEQVR4nO3ZL0hdURzA8bM5HIKwIiwYDAsWg2XlpSXTNKyt2WyLy6LVaLPZlhbGkjAwvL1htywsDBYEQRCZMtz7jOEdHETefH/uvefA+fZ7OR9+lwOXXwilhMORfPoyCJJVoUAymkhPPvUGQeZwLP2+4un/bq55fJNu37Fw32v4GX5IrxMs3gsRYZZwKp3OsDwUIsI8x3nbAlygMxIiwnSqF7XVT7wYCxFhVnDVAuIXXk4EEWFe4bpBxG+8nigiwqyj3wCij41aEBHmTQOQt7UiIsx2jYitRhARZqcGxG6jiAryAHsTROzjYeOQCjOFdxNAvMejVhARZhofx0Ac4HFIIczgcATEZ8yGlMITfBoC0f37TNvnLmWRIQuppkASS5lIYikTSSxlIomlTCSxlIkkljKRzNfbIdXc/Ltv4jJryK2N14fsIf/C6qB9ZMgpAz63kGPu+NxCzmGt2pN32z5LKdTYH8Gvh0Art3OAAAAAAElFTkSuQmCC">
+                                <span class="filter-box">
+                                    <ul>
+                                        <li><a class="filter-a" href="/dashboard/players">No Filter</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/matches">Matches</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/batting.runs">Runs</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/batting.fifties">Fifties</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/batting.hundreds">Hundreds</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/bowling.wickets">Wickets</a></li>
+                                        <li><a class="filter-a" href="/dashboard/players/sort/bowling.fivers">Fivers</a></li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < allPlayers.length; i++) { 
+                            let name = allPlayers[i].name;
+                            let initialsArray = name.split(' ').map(word => word[0].toUpperCase());
+                            let initials = initialsArray.slice(0, 2).join('');
+                        %>
+                            <tr>
+                                <td>
+                                    <div class="circle sec-circle"><%= initials %></div>
+                                </td>
+                                <td class="td-name"><span><%= name %></span><span class="res-category">(<%= allPlayers[i].category %>)</span></td>
+                                <td class="td-category"><%= allPlayers[i].category %></td>
+                                <td><a href="/dashboard/showstats/<%= name%>" class="rank">All Stats</a></td>
+                            </tr>
+                            
+                            <% } %>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <div class="create-button corner">
+            <a class="plus-sign" href="/dashboard/addplayer">+</a>
+        </div>
+        <% } %>
+    </div>
+    <script src="/script.js"></script>
+    <script>
+        const filterImg = document.getElementById('filter-img');
+        const filterBox = document.getElementsByClassName('filter-box')[0];
+
+        filterImg.addEventListener('click' , ()=>{
+            filterBox.style.display = 'inline';
+        })
+        window.onclick = function(event) {
+            if (!event.target.matches('#filter-img')) {
+                filterBox.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

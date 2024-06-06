@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricCrazy Login</title>
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navcontainer">
+            <a href="/" class="navbar-brand"><img src="/logo.png" alt=""></a>
+            <ul class="navbar-menu">
+                <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/dashboard/players">My Players</a></li>
+                <li class="nav-item"><a href="/blog">Blog</a></li>
+            </ul>
+            <div class="navbar-right">
+                <a href="/auth/login" id="signup-btn" class="btn btn-primary">Login</a>
+                <a href="/auth/signup"  class="btn btn-secondary">Signup</a>
+            </div>
+            <div class="hamBurger">
+                <a onclick="toggleNav()">&#9776;</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <div class="left-side">
+                <h2>CricCrazy</h2>
+                <p>Manage and track cricket stats for players and team.</p>
+            </div>
+            <div class="right-side">
+                <img src="/logo.png" alt="Mastery Hub Logo" class="logo">
+                <form class="login-form" action="/auth/login" method="post">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" >
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" value="">
+
+                    <% if(errMessage) {%>   
+                        <p id="error-message">Error:<%= errMessage%></p>
+                    <% }%>
+                    <button type="submit">Log in</button>
+                    <div class="separator">or</div>
+                    <p class="create-account">Are you new? <a class="under" href="/auth/signup">Create an Account</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

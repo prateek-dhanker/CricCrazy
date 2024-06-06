@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats Edit Form</title>
+
+    <link rel="stylesheet" href="/navbar2.css">
+    <link rel="stylesheet" href="/details.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/dashboard/showstats/<%= player.name%>">
+            <i class="arrow"></i>
+            <span>Return to Players</span>
+        </a>
+        <img src="/logo.png" alt="">
+    </nav>
+
+    <div class="form-container">
+        <h1>Edit Player Stats</h1>
+
+        <form id="cricketerForm" action="/dashboard/edit/<%= player.name%>" method="post">
+
+            <% if(errMessage) {%>   
+                <p id="error-message">Error:<%= errMessage%></p>
+            <% }%>
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<%= player.name%>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="batsman" <% if(player.category === 'batsman'){%>selected <% } %> >Batsman</option>
+                    <option value="bowler" <% if(player.category === 'bowler'){%>selected <% } %> >Bowler</option>
+                    <option value="allrounder" <% if(player.category === 'allrounder'){%>selected <% } %> >Allrounder</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="matches">Matches:</label>
+                <input type="number" id="matches" name="matches" value="<%= player.matches%>" required>
+            </div>
+
+            <div class="batting-stats" id="battingStats">
+                <h2>Batting Stats</h2>
+                <div class="form-group">
+                    <label for="innings-bat">Innings:</label>
+                    <input type="number" id="innings-bat" name="innings-bat" placeholder="Innings Batted" value="<%= player.batting.innings%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="runs-bat">Runs:</label>
+                    <input type="number" id="runs-bat" name="runs-bat"  placeholder="Runs Scored" value="<%= player.batting.runs%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="balls-bat">Balls:</label>
+                    <input type="number" id="balls-bat" name="balls-bat" placeholder="Balls Played" value="<%= player.batting.balls%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="notout">NotOut:</label>
+                    <input type="number" id="notout" name="notout" placeholder="No. of notout innings" value="<%= player.batting.notout%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="fifties">50s:</label>
+                    <input type="number" id="fifties" name="fifties" placeholder="50-100 score count" value="<%= player.batting.fifties%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="hundreds">100s:</label>
+                    <input type="number" id="hundreds" name="hundreds" placeholder="100+ score count" value="<%= player.batting.hundreds%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="highest">Highest:</label>
+                    <input type="number" id="highest" name="highest" placeholder="Highest Score" value="<%= player.batting.highest%>" required>
+                </div>
+            </div>
+
+            <div class="bowling-stats" id="bowlingStats">
+                <h2>Bowling Stats</h2>
+                <div class="form-group">
+                    <label for="balls-ball">Balls:</label>
+                    <input type="number" id="balls-ball" name="balls-ball" placeholder="No. of balls bowled" value="<%= player.bowling.balls%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="wickets">Wickets:</label>
+                    <input type="number" id="wickets" name="wickets" placeholder="Wickets Taken" value="<%= player.bowling.wickets%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="runs-ball">Runs:</label>
+                    <input type="number" id="runs-ball" name="runs-ball" placeholder="Runs conceided when balling" value="<%= player.bowling.runs%>" required>
+                </div>
+                <div class="form-group">
+                    <label for="fivers">Fivers</label>
+                    <input type="number" id="fivers" name="fivers" placeholder="No. of fivers" value="<%= player.bowling.fivers%>" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button id="edit-btn" type="submit">Apply Changes</button>
+            </div>
+        </form>
+    </div>
+    <script src="/script.js"></script>
+    <script>
+        const editBtn = document.getElementById('edit-btn');
+
+        editBtn.addEventListener('click' , function(){
+            const con = confirm("Apply the current changes ?");
+
+            if(!con)
+                event.preventDefault();
+        })
+    </script>
+</body>
+</html>

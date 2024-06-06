@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats</title>
+    <link rel="stylesheet" href="/navbar2.css">    
+    <link rel="stylesheet" href="/showstats.css">    
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/dashboard/players">
+            <i class="arrow"></i>
+            <span>Return to Players</span>
+        </a>
+        <img src="/logo.png" alt="">
+    </nav>
+    <div class="container">
+        <h1>Player Stats</h1>
+
+        <div class="more">
+            <div class="more-options">
+                <a href="/dashboard/edit/<%= player.name%>"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNUlEQVR4nO2asU9TURTGT1l0YZEZjcQo0nvKYAQ3NwOcA/hfaJhNjCGmM0E3SUn8J1x495SSuLIQgouToYQYExiNA4vP3Npq075CH2Xgnp5f0qm9Tb7vfPee83oLYBiGYRiGYRiGYVw/StXFu+j5HQodOKFT5+m7E9rBhFfufH56EzSDQq9R6AyF06yXEzrEKj0CdaRQQKFKL+EdJvzSZULav/j2JNxL5m6ABqZqfNsJn+QxoGGC55egBdyax9wmeKpCtKRQePBpaXQQE5zwMUS85zed0N6UPLt1WRNCi4RYxeN/EZc2IayFmMXjgCY44TWIhhQKTmij94HG+5O152PtS4rbCw9R+Ef2GjrDGk1AzJXHAZJQFH4FmsRjLhOoAipiL/m3gxP6COXyCGirPPaRhKIsj4fvBbWVl4uToL7ymJGEzonxulf+w1WJbxoQz553Jp6t8mixZ9vzaAce22mPKlsdhN/tefUq+3wYmuIYb5ug52/DN+Q0KSb8OFsIi/rKB9DTevcDC33Ne7ERXeXbRt3DLjGe3rbe78eEOMUDwLTQTJag0tb8/X8fKpdHnKdEVexb/L2u7n5UbV1nO09vnPCXc8RXohUPjXhzPUNY3XneRc+/LzjwIhYPAJgsPhmaVpcFCr0fWvEQ4u/pKKfw0C1Wo4593vg3RHtaD90CNIEJr5wjvB66Q0O0hmr3+vcGevrZNvkdhTOhVF2YVSu6k3Ah4Ty/GCrRhmEYhmEYhgHq+APFZ4NAwhy0jgAAAABJRU5ErkJggg=="></a>
+                <p>Edit</p>
+            </div>
+            <div class="more-options">
+                <a id="delete-btn" href="/dashboard/delete/<%= player.name%>"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAACeElEQVR4nO1bPW8TQRC9AiGFApoE0dGEIvaOMbhJlwYJ62YSCSHnN+QPIAqI5JIiQM1fSBlFnkkihKAL0NFHkUD5aNIBDcmhsQ6C4C7B0fp2Lc+TpprV3L63u3e7M3tJYhgOHM8vAtMzP4adZJQws57eBKYTEMq8GNOJxkxGBXXB297I56Yxk1FB3QRAmwEwzkuguYm3gOmjT9OYoXkZxh5zb+YuNYQeOqaXwPQqJtM+ad+0j0MZqJrMTzumT75fbr5N+6h99Uq+tXXvmmPcCU3u/0XAnele+6o3ARzjcmhSFxBh2aMAtB2a0OCG7/0JIPQ5PKGBbc+bACC0FwGhgcwxHpoAvgA2A2jsl8ATf+mtyuyptyVgMJyisfHgOggdxWitNZpMho3aenoj9De+zJq99pQJEHoGOMGv5X48Bqbvpf6+D48vFjuKGYDPtQ0IPi4i3+gt3Gmt0RVg/PDv1pW2Z1c7E8B0t1AEpkca2zG+iFaAhqTtfpuNtHnW3lyFKhMvJ3n4t19jqk+fEa8AjPdLCyOMB78FYFopGOGVUz8elKXF9RkmgNgMyGwJiL0DMnsJin0FMvsMiu0DMtsIie0EM9sKi50FMjsM9ew0OGXH4WGjZvmA1BIiYBkhspQYWE6QLCkKlhUmS4uD1QVo8MLIOZWhkS2MAGNX2zimpYLC5g+986+XmZ3Qu4La4Fv1aRttW+BfysXphhVgtXPZMb4uL5DSblmF1wl+KxrdP2dJv01x4VVj7p7x3GoEUGiF9xwRKjcn9EX7lVSFWS1lC22FJp7bfn0znamMfGQihCEfiQhhyQcWIQ7yv5BffelWdRPUfqNL/OAnOdhkskhUEYkAAAAASUVORK5CYII="></a>
+                <p>Delete</p>
+            </div>
+            
+        </div>
+
+        <table>
+            <tr>
+                <td class="title">Name</td>
+                <td><%= player.name %></td>
+            </tr>
+            <tr>
+                <td class="title">Category</td>
+                <td><%= player.category %></td>
+            </tr>
+        </table>
+
+        <div class="slider">
+            <button id="batting-btn" class="active">Batting Stats</button>
+            <button id="bowling-btn">Bowling Stats</button>
+        </div>
+
+        
+        
+        <div id="batting-stats" class="stats active">
+            <h2>Batting Stats</h2>
+            <table id="dataTable">
+                <tbody>
+                    <% 
+                        let innings = player.batting.innings;
+                        let notout = player.batting.notout;
+                        let runs = player.batting.runs;
+                        let balls = player.batting.balls;
+
+                        let avg = 0.0;
+                        if(innings != notout)
+                            avg = runs/(innings-notout);
+                        
+                        let sr = 0.0;
+                        if(balls!=0)
+                            sr = (runs/balls)*100;
+                    %>
+                    <tr>
+                        <td class="title">Matches</td>
+                        <td><%= player.matches %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Innings</td>
+                        <td><%= innings %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Runs</td>
+                        <td><%= runs %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Balls</td>
+                        <td><%= balls %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Highest</td>
+                        <td><%= player.batting.highest %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Average</td>
+                        <td><%= avg.toFixed(2) %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Strike Rate</td>
+                        <td><%= sr.toFixed(2) %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Not Out</td>
+                        <td><%= notout %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">50s</td>
+                        <td><%= player.batting.fifties %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">100s</td>
+                        <td><%= player.batting.hundreds %></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+
+        <div id="bowling-stats" class="stats">
+            <h2>Bowling Stats</h2>
+            <table id="dataTable">
+                <tbody>
+                    <%
+                        balls = player.bowling.balls;
+                        let wickets = player.bowling.wickets;
+                        runs = player.bowling.runs;
+
+                        let average = 0.0;
+                        if(wickets != 0)
+                            average = runs/wickets;
+                        sr = 0.0;
+                        if(wickets != 0)
+                            sr = balls/wickets;
+                        let eco = 0.0;
+                        if(balls != 0)
+                            eco = (runs/balls)*6;
+                        
+                    %>
+                    <tr>
+                        <td class="title">Matches</td>
+                        <td><%= player.matches %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Balls</td>
+                        <td><%= balls %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Runs</td>
+                        <td><%= runs %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Wickets</td>
+                        <td><%= wickets %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Average</td>
+                        <td><%= average.toFixed(2) %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Economy</td>
+                        <td><%= eco.toFixed(2) %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Strike Rate</td>
+                        <td><%= sr.toFixed(2) %></td>
+                    </tr>
+                    <tr>
+                        <td class="title">5W</td>
+                        <td><%= player.bowling.fivers %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Add more bowling stats as needed -->
+        </div>
+    </div>
+
+    <script>
+        const battingBtn = document.getElementById('batting-btn');
+        const bowlingBtn = document.getElementById('bowling-btn');
+        const battingStats = document.getElementById('batting-stats');
+        const bowlingStats = document.getElementById('bowling-stats');
+        const deleteBtn = document.getElementById('delete-btn');
+
+        battingBtn.addEventListener('click', function() {
+            battingStats.classList.add('active');
+            bowlingStats.classList.remove('active');
+            battingBtn.classList.add('active');
+            bowlingBtn.classList.remove('active');
+        });
+
+        bowlingBtn.addEventListener('click', function() {
+            bowlingStats.classList.add('active');
+            battingStats.classList.remove('active');
+            bowlingBtn.classList.add('active');
+            battingBtn.classList.remove('active');
+        });
+        deleteBtn.addEventListener('click' , function(){
+            const del = confirm("Do you want to delete the player stats ?");
+            if(!del)
+                event.preventDefault();
+        })
+    </script>
+</body>
+</html>
